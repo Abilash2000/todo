@@ -1,25 +1,25 @@
 import React, {useState} from 'react';
 import './App.css';
-  import { Input,Button } from 'antd';
-  import { DeleteOutlined,CheckOutlined } from '@ant-design/icons';
-
+import { Input,Button } from 'antd';
+import { DeleteOutlined,CheckOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 
-// var todos = []
-var todos:Array<Todo> = [
-  // {text:"ho" , completed: true},
-  // {text:"ho" , completed: true}
 
-]
-
-
+// An empty array of the type Todo from types.d.ts
+var todos:Array<Todo> = []
 
 const App: React.FC = () => {
 
+  //To store the Input Values
   const [TodoInput, setTodoInput] = useState('');
-  
+
+
+  //Contains all the list
   const [AllTodo, setAllTodo] = useState(todos);
 
+
+
+  //When the user clicks add Todo, new todo will be added to the AllTodo state
   function handleAddTodo(){
 
     if (TodoInput !== '' ) {
@@ -28,12 +28,12 @@ const App: React.FC = () => {
     setTodoInput('')
     }
     
-    
-
-
   }
 
 
+
+
+  // When the complete button is clicked the todo will be sent to the function 
   function OnComplete(todo:Todo) {
 
     let comp = !todo.completed
@@ -43,25 +43,18 @@ const App: React.FC = () => {
           item.id === todo.id 
           ? {...item, completed : comp} 
           : item 
-  ))
-    
-        console.log(AllTodo);
-        
-
+  ))  
   }
 
-  function OnDelete(todo:Todo) {
 
+  // When the delete button is clicked the todo will be sent to this function 
+  function OnDelete(todo:Todo) {
 
     setAllTodo(
       AllTodo.filter(item => 
           item.id !== todo.id 
-    
       ))
-    
-        console.log(AllTodo);
-        
-
+          
   }
 
 
@@ -73,18 +66,19 @@ const App: React.FC = () => {
     <div className="mt-10">
     <p className = "text-center text-5xl font-mono font-bold text-green-500" >Welcome to the ToDO App</p>
     </div>
-<div className="container mx-auto mt-8 bg-gray-100 ">
-<br/>
+    <div className="container mx-auto mt-8 bg-gray-100 ">
+      <br/>
 
-  <div className="flex m-4">
-    
-<Input placeholder="Add Todo" value = {TodoInput} onChange= {(value) => {
-  setTodoInput(value.target.value)
-}}/>
-<Button type="primary" shape="round"  size="large" className = "ml-5" onClick= {handleAddTodo}>Add</Button>
-<br/>
-</div>
-<br/>
+      <div className="flex m-4">
+        
+      <Input placeholder="Add Todo" value = {TodoInput} onChange= {(value) => {
+        setTodoInput(value.target.value)
+      }}/>
+      <Button type="primary" shape="round"  size="large" className = "ml-5" onClick= {handleAddTodo}>Add</Button>
+
+    <br/>
+    </div>
+    <br/>
 
   <ul>  
     {AllTodo.map(todo => {
@@ -112,7 +106,7 @@ const App: React.FC = () => {
    </div>
 
 
-      </div>
+    </div>
   );
 }
 
