@@ -2,7 +2,6 @@
   "name": "todo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://abilash2000.github.io/todo/.",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
@@ -27,9 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:css": "tailwind build src/style.css -o src/App.css",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "build:css": "tailwind build src/style.css -o src/App.css"
   },
   "eslintConfig": {
     "extends": [
